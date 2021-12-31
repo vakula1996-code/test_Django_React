@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 
-class Type_technicians(models.Model):
+class TypeTechnicians(models.Model):
     name = models.CharField(max_length=30, db_index=True, verbose_name='Тип техніки')
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Type_technicians(models.Model):
         verbose_name_plural = 'Тип техніки'
         ordering = ['name']
 
-class Name_technicians(models.Model):
+class NameTechnicians(models.Model):
     name = models.CharField(max_length=30,db_index=True,verbose_name='Назва техніки')
 
     def __str__(self):
@@ -45,10 +45,10 @@ class Subdivisions(models.Model):
         verbose_name_plural = 'Підрозділ'
         ordering = ['subdivisions']
 
-class New_technique(models.Model):
+class NewTechnique(models.Model):
     serial_number = models.CharField(max_length=30, verbose_name='Серійний номер')
-    type_techn = models.ForeignKey(Type_technicians, on_delete=models.CASCADE,verbose_name='Тип техніки')
-    name_technicians = models.ForeignKey(Name_technicians, on_delete=models.CASCADE,verbose_name='Назва техніки')
+    type_techn = models.ForeignKey(TypeTechnicians, on_delete=models.CASCADE,verbose_name='Тип техніки')
+    name_technicians = models.ForeignKey(NameTechnicians, on_delete=models.CASCADE,verbose_name='Назва техніки')
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE,verbose_name='Одиниці виміру')
     price = models.FloatField(verbose_name='Ціна')
 
@@ -94,7 +94,7 @@ class Document(models.Model):
 
 
 class WhereIs(models.Model):
-    id_technique = models.ForeignKey(New_technique, on_delete=models.CASCADE,verbose_name='Техніка')
+    id_technique = models.ForeignKey(NewTechnique, on_delete=models.CASCADE,verbose_name='Техніка')
     id_doc = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Документ')
     subdivision_which = models.ForeignKey(Subdivisions, on_delete=models.CASCADE,verbose_name='Підрозділ')
     сategory = models.ForeignKey(Categorys, on_delete=models.CASCADE, verbose_name="Категорія")

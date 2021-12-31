@@ -6,7 +6,7 @@ class Type_techniciansAdmin(admin.ModelAdmin):
     list_display_links = ('id','name')
     search_fields = ('id','name')
 
-class Name_techniciansAdmin(admin.ModelAdmin):
+class NameTechniciansAdmin(admin.ModelAdmin):
     list_display = ('id','name')
     list_display_links = ('id','name')
     search_fields = ('id','name')
@@ -48,15 +48,15 @@ class MovementAdmin(admin.ModelAdmin):
     search_fields = ('id','from_which','subdivision_which')
 
 
-admin.site.register(Type_technicians,Type_techniciansAdmin)
+admin.site.register(TypeTechnicians,Type_techniciansAdmin)
 
-admin.site.register(Name_technicians,Name_techniciansAdmin)
+admin.site.register(NameTechnicians,NameTechniciansAdmin)
 
 admin.site.register(Unit,UnitAdmin)
 
 admin.site.register(Subdivisions,SubdivisionsAdmin)
 
-admin.site.register(New_technique,New_techniqueAdmin)
+admin.site.register(NewTechnique,New_techniqueAdmin)
 
 admin.site.register(Categorys,CategorysAdmin)
 

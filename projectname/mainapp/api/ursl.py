@@ -1,8 +1,12 @@
 from django.urls import path 
-from django.urls.resolvers import URLPattern
 
-from .views import TestApiView
+from rest_framework import routers
+from .views import NewTechniqueViewSet,WhereIsViewSet
 
-urlpatterns = [
-    path('test-api/', TestApiView.as_view(), name='test')
-]
+router = routers.SimpleRouter()
+router.register('tech' , NewTechniqueViewSet , basename='tech')
+router.register('detalis' , WhereIsViewSet , basename='detalis')
+
+
+urlpatterns = []
+urlpatterns += router.urls

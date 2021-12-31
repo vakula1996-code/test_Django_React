@@ -1,9 +1,37 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import viewsets
 
-class TestApiView(APIView):
+from .seriallizers import NewTechniqueSerializer ,NewTechniqueListRetrieveSerializer , WhereIsSerializer,WhereIsListRetrieveSerializer
+from ..models import NewTechnique , WhereIs
 
-    def get(self , request,*args, **kwargs):
+class NewTechniqueViewSet(viewsets.ModelViewSet):
 
-        data = [{'id': 1,'name':'John'},{'id':2,'name':'Jane'}]
-        return Response(data)
+    queryset = NewTechnique.objects.all()
+    serializer_class = NewTechniqueSerializer 
+
+    action_to_serializer = {
+        "list": NewTechniqueListRetrieveSerializer,
+        "retrieve": NewTechniqueListRetrieveSerializer 
+    }
+
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+        )
+
+class WhereIsViewSet(viewsets.ModelViewSet):
+
+    queryset = WhereIs.objects.all()
+    serializer_class = WhereIsSerializer 
+
+    action_to_serializer = {
+        "list": WhereIsListRetrieveSerializer,
+        "retrieve": WhereIsListRetrieveSerializer 
+    }
+
+
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+    )

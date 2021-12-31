@@ -20,6 +20,6 @@ from mainapp.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index),
-    path('api/', include('mainapp.api.ursl'))
+    path('', index),
+    path('api/', include('mainapp.api.ursl')),
 ]

@@ -5,9 +5,72 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d6eaf8;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #3538e1;
+  color: white;
+  font-size: 30px;
+}
+.nav-link-white{
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link-white:hover{
+  color: red;
+}
+
+.linksNav{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.linksNav a{
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #3beccf 0%, #4830F0 70%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+
+}
+.linksNav a:hover{
+  color: black;
+
+}
+
+
+.nav-link.link-primary.active{
+  color: red;
+  border: 1px solid #0d6efd;
+}
+
+
+
+.table{
+  margin-top: 70px;
+}
+
+
+.table-input{
+  text-align: center;
+  margin-right: 0px;
 }

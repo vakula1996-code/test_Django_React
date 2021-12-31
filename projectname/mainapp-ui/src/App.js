@@ -1,26 +1,31 @@
-import React, { useEffect,useState } from 'react';
-import axios from 'axios';
+import { Route, Routes,Navigate } from "react-router-dom";
+import NavbarHome from "./components/Navbar/NavbarHome"
 
+import { 
+  Home, 
+  Revision, 
+  Additions, 
+  Transfer,
+  Whoops404,
+  RevisionList
+} from './pages/pages';
 
 function App() {
-  const [people, setPeople] = useState([])
-
-  useEffect(()=>{
-    axios({
-      method: "GET",
-      url: "http://127.0.0.1:8000/api/test-api"
-    }).then(response=>{
-      setPeople(response.data)
-    })
-  },[])
-
   return (
-    <div className="App">
-      <ul>
-        {people.map(p=> (
-          <li key={p.id}>{p.name}</li>
-        ))}
-      </ul>
+    <div>
+        <Routes>
+          <div>
+            <NavbarHome/>
+          </div>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="revision" element={<Revision />}/>
+          <Route exact path="revision/:id" element={<RevisionList/>}/>
+          <Route exact path="additions" element={<Additions />}/>
+          <Route exact path="transfer" element={<Transfer />}/>
+          <Route/>
+          <Route  path="*" element={<Whoops404 />}/>
+        </Routes>
+        
     </div>
   );
 }
